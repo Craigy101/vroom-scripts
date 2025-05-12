@@ -3,7 +3,7 @@
 import argparse
 import json
 from utils.asap_helpers import solve_asap
-from utils.matrix import add_matrix
+from utils.matrix import add_matrices
 
 # Parse a json-formatted input instance, then apply iterative solving
 # strategies to come up with a solution minimizing completion time.

@@ -3,7 +3,7 @@
 import json
 import sys
 from utils.file import load_json
-from utils.matrix import add_matrix
+from utils.matrix import add_matrices
 
 # Parse a json-formatted input instance, add the matrix using OSRM for
 # each required profile, then write a "standalone" problem instance
