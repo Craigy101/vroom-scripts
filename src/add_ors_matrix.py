@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     data = load_json(input_file)
 
-    add_matrix(data, ROUTING)
+    add_matrices(data, ROUTING)
 
     with open(output_name, "w") as out:
         print("Writing problem with matrix to " + output_name)

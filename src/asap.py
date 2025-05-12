@@ -153,7 +153,7 @@ if __name__ == "__main__":
             if "matrices" not in data:
                 # Embed required matrices prior to solving to avoid
                 # duplicate matrix computations.
-                add_matrix(data, get_routing(args))
+                add_matrices(data, get_routing(args))
 
             # Iterative solving approach.
             response = solve_asap(
