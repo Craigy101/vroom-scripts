@@ -5,7 +5,7 @@ import subprocess
 
 
 def solve(data, cl_args):
-    args = ["vroom"]
+    args = ["vroom-core"]
     args.extend(cl_args)
     try:
         result = subprocess.check_output(args, text=True, input=json.dumps(data))
