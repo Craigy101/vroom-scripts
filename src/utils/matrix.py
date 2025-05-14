@@ -36,11 +36,21 @@ def add_matrix(data, routing):
     ):
         raise ValueError("Invalid routing engine.")
 
+    # tiny health-check instance
     if not data.get("vehicles") or all(
         ("start" not in v and "end" not in v) for v in data["vehicles"]
     ):
-        data["matrices"] = {}  # still add the key for schema parity
-        return
+        # ── 0. Accept pre-computed matrices and health probes ─────────
+        if "matrix" in data or "matrices" in data:
+            # Someone already provided durations/distances, or this is the
+            # we just make sure the key name
+            # matches what the core expects and return.
+            if "matrix" in data and "matrices" not in data:
+                # Old 1-matrix layout → promote to new plural form
+                data["matrices"] = {
+                    "car": {"durations": data["matrix"], "distances": data["matrix"]}
+                }
+            return
     # Retrieve all problem locations in the same order as in
     # input_parser.cpp.
     locs = []
