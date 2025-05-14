@@ -238,7 +238,10 @@ def solve_asap(problem):
     if init.get("code", 1) != 0:
         raise OSError(init["code"], init["error"])
     if init["summary"].get("unassigned", 0) != 0:
-        raise OSError(2, "Initial solution has unassigned jobs")
+        log.warning(
+            "Initial solution has %s unassigned jobs – continuing anyway",
+            init["summary"]["unassigned"],
+        )
 
     # 2) dichotomic horizon reduction
     solutions = dichotomy(problem["instance"], problem["cl_args"], init)
