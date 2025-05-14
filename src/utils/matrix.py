@@ -36,6 +36,11 @@ def add_matrix(data, routing):
     ):
         raise ValueError("Invalid routing engine.")
 
+    if not data.get("vehicles") or all(
+        ("start" not in v and "end" not in v) for v in data["vehicles"]
+    ):
+        data["matrices"] = {}  # still add the key for schema parity
+        return
     # Retrieve all problem locations in the same order as in
     # input_parser.cpp.
     locs = []
